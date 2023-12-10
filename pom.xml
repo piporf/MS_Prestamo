@@ -105,6 +105,7 @@
     </dependencies>
 
 	<build>
+		<defaultGoal>spring-boot:run</defaultGoal>
 		<plugins>
 
 			<plugin>
@@ -124,10 +125,6 @@
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>0.8.7</version>
 				<configuration>
-					<!--excludes>
-						<exclude>**/models/**/*.class</exclude>
-						<exclude>**/exceptions/GlobalExceptionHandler.class</exclude>
-					</excludes-->
 				</configuration>
 				<executions>
 					<execution>
