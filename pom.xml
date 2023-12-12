@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.monte</groupId>
-	<artifactId>MS_Prestamo</artifactId>
+	<artifactId>MS_Prestamos</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>MS_Prestamo</name>
 	<description>Calcula el préstamo de un articulo evaluando sus propiedades</description>
@@ -102,9 +102,16 @@
 			<version>3.12.7</version>
 		</dependency>
 
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+
     </dependencies>
 
 	<build>
+		<defaultGoal>spring-boot:run</defaultGoal>
 		<plugins>
 
 			<plugin>
@@ -124,10 +131,6 @@
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>0.8.7</version>
 				<configuration>
-					<!--excludes>
-						<exclude>**/models/**/*.class</exclude>
-						<exclude>**/exceptions/GlobalExceptionHandler.class</exclude>
-					</excludes-->
 				</configuration>
 				<executions>
 					<execution>
