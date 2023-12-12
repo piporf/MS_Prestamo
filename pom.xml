@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.monte</groupId>
-	<artifactId>MS_Prestamo</artifactId>
+	<artifactId>MS_Prestamos</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>MS_Prestamo</name>
 	<description>Calcula el préstamo de un articulo evaluando sus propiedades</description>
