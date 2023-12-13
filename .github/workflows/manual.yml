@@ -1,0 +1,18 @@
+name: CI/CD a CodePipeline AWS
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger AWS CodePipeline
+        uses: zulhfreelancer/aws-codepipeline-action@v1.0.7
+        with:
+          aws-region: "us-east-1"
+          aws-access-key: ${{ secrets.AWS_PIPELINE_ACCESS_KEY }}
+          aws-secret-key: ${{ secrets.AWS_PIPELINE_SECRET_KEY }}
+          pipeline-name: "API-Prestamos-Pipeline"
