@@ -27,19 +27,27 @@ public class PrestamoService implements IPrestamoService {
 
         logger.info("PrestamoService: Inicia cálculo.");
 
-        float valorMaterial;
+        PrecioMaterial precioMaterial;
         BigDecimal montoPrestamo;
+        PrestamoResponse prestamo;
 
         try {
-            PrecioMaterial precioMaterial = precioMaterialRepository.findByClave(idMaterial).orElse(null);
-            valorMaterial = precioMaterial != null ? precioMaterial.getPrecioGramo() : 0;
-            montoPrestamo = BigDecimal.valueOf((pesoArticulo * valorMaterial) * 0.80);
+            precioMaterial = precioMaterialRepository.findByClave(idMaterial).orElse(null);
+            if(precioMaterial != null ){
+                montoPrestamo = BigDecimal.valueOf((pesoArticulo * Float.valueOf(precioMaterial.getPrecioGramo())) * 0.80);
+                prestamo = new PrestamoResponse(precioMaterial.getMaterial(),precioMaterial.getPrecioGramo(), montoPrestamo.toPlainString());
+            } else {
+                throw new BaseException("El o los parametros especificados son invalidos.","400", HttpStatus.BAD_REQUEST);
+            }
+        } catch (BaseException e) {
+            throw e;
         } catch (Exception e) {
-            throw new BaseException(e.getMessage(), "00", HttpStatus.INTERNAL_SERVER_ERROR);
+            logger.error("Error: ", e);
+            throw new BaseException("Error no esperado.", "500", HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
         logger.info("PrestamoService: Termina cálculo.");
-        return new PrestamoResponse(valorMaterial, montoPrestamo);
+        return prestamo;
     }
 
 }

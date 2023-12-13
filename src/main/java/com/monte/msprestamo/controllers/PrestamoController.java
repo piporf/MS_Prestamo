@@ -50,11 +50,16 @@ public class PrestamoController {
             @ApiResponse(responseCode = "400", description = "El o los parametros especificados son invalidos.",  content = @Content),
             @ApiResponse(responseCode = "500", description = "Error no esperado.", content = @Content)
     })
-    public Response calcularPrestamo(@RequestBody @Valid AvaluoRequest avaluo) throws BaseException {
+    public Response calcularPrestamo(@RequestBody @Valid AvaluoRequest avaluo) {
 
         logger.info(">>> PrestamoController: Calcular Prestamo Inicio POST /v1/prestamo REQUEST: {}" , avaluo.getIdMaterial() + " - " + avaluo.getPesoArticulo());
 
-        PrestamoResponse prestamo = prestamoService.calcularPrestamo(avaluo.getIdMaterial(), avaluo.getPesoArticulo());
+        PrestamoResponse prestamo;
+        try {
+            prestamo = prestamoService.calcularPrestamo(avaluo.getIdMaterial(), avaluo.getPesoArticulo());
+        } catch (BaseException e) {
+            return beanFactory.getBean(Response.class, e.getStatus().toString(), e.getDescripcion(),null);
+        }
 
         logger.info(">>>PrestamoController: Termina POST /v1/prestamo  ");
 

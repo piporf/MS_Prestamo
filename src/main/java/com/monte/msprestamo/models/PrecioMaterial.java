@@ -17,9 +17,9 @@ public class PrecioMaterial implements Serializable  {
     private String id;
     private String clave;
     private String material;
-    private float precioGramo;
+    private String precioGramo;
 
-    public PrecioMaterial(String id, String clave, String material, float precioGramo) {
+    public PrecioMaterial(String id, String clave, String material, String precioGramo) {
         this.id = id;
         this.clave = clave;
         this.material = material;
