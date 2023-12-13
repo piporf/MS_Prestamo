@@ -7,10 +7,10 @@ import com.monte.msprestamo.models.PrestamoResponse;
 public interface IPrestamoService {
 
     /**
-     * Funcionalidad que permite calcular el prestamo de un articulo.
+     * Funcionalidad que permite calcular el préstamo de un artículo.
      * @param idMaterial Identificador del material.
-     * @param pesoArticulo Peso en gramos del articulo.
-     * @return {@link PrestamoResponse} Contiene la informacion del prestamo calculado.
+     * @param pesoArticulo Peso en gramos del artículo.
+     * @return {@link PrestamoResponse} Contiene la información del préstamo calculado.
      */
     PrestamoResponse calcularPrestamo(String idMaterial, float pesoArticulo) throws BaseException;
 
