@@ -37,7 +37,7 @@ public class PrestamoService implements IPrestamoService {
                 montoPrestamo = BigDecimal.valueOf((pesoArticulo * Float.valueOf(precioMaterial.getPrecioGramo())) * 0.80);
                 prestamo = new PrestamoResponse(precioMaterial.getMaterial(),precioMaterial.getPrecioGramo(), montoPrestamo.toPlainString());
             } else {
-                throw new BaseException("El o los parametros especificados son invalidos.","400", HttpStatus.BAD_REQUEST);
+                throw new BaseException("El o los parámetros especificados son inválidos.","400", HttpStatus.BAD_REQUEST);
             }
         } catch (BaseException e) {
             throw e;

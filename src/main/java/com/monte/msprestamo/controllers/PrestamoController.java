@@ -22,7 +22,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/monte")
-@Api(value = "Servicio que permite calcular el prestamo de un articulo evaluando sus propiedades"
+@Api(value = "Servicio que permite calcular el préstamo de un artículo evaluando sus propiedades"
         , produces = MediaType.APPLICATION_JSON_VALUE
         , protocols = "http"
         , tags = {"Prestamo"})
@@ -43,16 +43,16 @@ public class PrestamoController {
     @ResponseBody
     @ResponseStatus(HttpStatus.OK)
     @PostMapping(value = "/v1/prestamo", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    @Operation(summary = "Calcula el préstamo de un artículo evaluando sus propiedades", method = "POST", tags = { "Prestamo"} )
+    @Operation(summary = "Calcula el préstamo de un artículo evaluando sus propiedades.", method = "POST", tags = { "Prestamo"} )
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Cálculo del préstamo exitoso.",
                     content = { @Content(mediaType = "application/json", schema = @Schema(implementation = Response.class)) }),
-            @ApiResponse(responseCode = "400", description = "El o los parametros especificados son invalidos.",  content = @Content),
+            @ApiResponse(responseCode = "400", description = "El o los parámetros especificados son inválidos.",  content = @Content),
             @ApiResponse(responseCode = "500", description = "Error no esperado.", content = @Content)
     })
     public Response calcularPrestamo(@RequestBody @Valid AvaluoRequest avaluo) {
 
-        logger.info(">>> PrestamoController: Calcular Prestamo Inicio POST /v1/prestamo REQUEST: {}" , avaluo.getIdMaterial() + " - " + avaluo.getPesoArticulo());
+        logger.info(">>> PrestamoController: Calcular Préstamo Inicio POST /v1/prestamo REQUEST: {}" , avaluo.getIdMaterial() + " - " + avaluo.getPesoArticulo());
 
         PrestamoResponse prestamo;
         try {
