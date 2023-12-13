@@ -1,5 +1,6 @@
 package com.monte.msprestamo.models;
 
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
@@ -11,6 +12,7 @@ public class AvaluoRequest implements Serializable {
     private String idMaterial;
 
     @NotNull(message = "El peso del articulo no puede ser nulo o vacio.")
+    @DecimalMin("0.00")
     private float pesoArticulo;
 
     public AvaluoRequest(String idMaterial, float pesoArticulo) {
