@@ -9,13 +9,16 @@ import java.math.BigDecimal;
 @Setter
 public class PrestamoResponse implements Serializable {
 
-    private static final long serialVersionUID = 2890051680308100441L;
+    private static final long serialVersionUID = 2890051680308100471L;
 
-    private float valorMaterial;
+    private String descripcionMaterial;
 
-    private BigDecimal montoPrestamo;
+    private String valorMaterial;
 
-    public PrestamoResponse(float valorMaterial, BigDecimal montoPrestamo) {
+    private String montoPrestamo;
+
+    public PrestamoResponse(String descripcionMaterial, String valorMaterial, String montoPrestamo) {
+        this.descripcionMaterial = descripcionMaterial;
         this.valorMaterial = valorMaterial;
         this.montoPrestamo = montoPrestamo;
     }
