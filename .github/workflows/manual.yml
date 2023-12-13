@@ -2,7 +2,7 @@ name: CI/CD a CodePipeline AWS
 
 on:
   push:
-    branches: [ "dev" ]
+    branches: [ "master" ]
 
 jobs:
   deploy:
